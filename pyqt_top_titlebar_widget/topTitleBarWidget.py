@@ -58,7 +58,6 @@ class TopTitleBarWidget(QWidget):
         title_lbl_color = QColor(title_lbl_r, title_lbl_g, title_lbl_b)
 
         self.__btnWidget = WindowsMinMaxCloseButtonsWidget(menu_bar=self.__menuBar, hint=hint)
-        self.__btnWidget.raise_()
 
         self.setObjectName('topTitleBar')
         self.setStyleSheet(f'''
