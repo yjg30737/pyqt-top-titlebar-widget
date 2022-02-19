@@ -17,8 +17,7 @@ PyQt top title bar widget for frameless window
 This package is made for <a href="https://github.com/yjg30737/pyqt-custom-titlebar-window.git">pyqt-custom-titlebar-window</a>'s title bar part.
 
 ## Usage
-* ```TopTitleBarWidget(menu_bar: QMenuBar, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None,
-                       align=Qt.AlignCenter, hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)``` - Constructor
+* ```TopTitleBarWidget(menu_bar: QMenuBar, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter, hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)``` - Constructor
 * ```getIconTitleWidget() -> SvgIconTextWidget(QWidget)``` - Get icon and title widget
 * ```getIconLbl() -> QLabel``` - Get icon label
 * ```getTitleLbl() -> QLabel``` - Get title label
