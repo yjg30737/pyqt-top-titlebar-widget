@@ -17,10 +17,12 @@ PyQt top title bar widget for frameless window
 This package is made for <a href="https://github.com/yjg30737/pyqt-custom-titlebar-window.git">pyqt-custom-titlebar-window</a>'s title bar part.
 
 ## Usage
-* ```getIconTitleWidget() -> SvgIconTextWidget(QWidget)``` - get icon and title widget
-* ```getIconLbl() -> QLabel``` - get icon label
-* ```getTitleLbl() -> QLabel``` - get title label
-* ```getBtnWidget() -> MinMaxCloseButtonsWidget``` - get buttons widget
+* ```TopTitleBarWidget(menu_bar: QMenuBar, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None,
+                       align=Qt.AlignCenter, hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)``` - Constructor
+* ```getIconTitleWidget() -> SvgIconTextWidget(QWidget)``` - Get icon and title widget
+* ```getIconLbl() -> QLabel``` - Get icon label
+* ```getTitleLbl() -> QLabel``` - Get title label
+* ```getBtnWidget() -> MinMaxCloseButtonsWidget``` - Get buttons widget
 
 ## Note
 If something goes wrong about this please contact me. 
@@ -32,3 +34,7 @@ But i don't know what kind of hidden impacts will occur.
 I don't want to delete the whole online repository by this, because i believe that deleting repository caused bad influence. 
 
 It's just a hunch, though.
+
+<hr>
+
+Current version(v0.0.1) supports Windows 10 OS style only.
