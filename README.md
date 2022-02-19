@@ -1,6 +1,12 @@
 # pyqt-top-titlebar-widget
 PyQt top title bar widget for frameless window
 
+## Requirements
+* PyQt5 >= 5.15
+
+## Setup
+```pip3 install git+https://github.com/yjg30737/pyqt-top-titlebar-widget.git --upgrade```
+
 ## Note
 If something goes wrong about this please contact me. 
 
