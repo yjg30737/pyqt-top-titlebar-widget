@@ -7,6 +7,21 @@ PyQt top title bar widget for frameless window
 ## Setup
 ```pip3 install git+https://github.com/yjg30737/pyqt-top-titlebar-widget.git --upgrade```
 
+## Imported Packages
+* <a href="https://github.com/yjg30737/python-color-getter.git">python-color-getter</a>
+* <a href="https://github.com/yjg30737/pyqt-svg-icon-text-widget.git">pyqt-svg-icon-text-widget</a>
+* <a href="https://github.com/yjg30737/pyqt-windows-min-max-close-buttons-widget.git">pyqt-windows-min-max-close-buttons-widget</a>
+* <a href="https://github.com/yjg30737/pyqt-mac-min-max-close-buttons-widget.git">pyqt-mac-min-max-close-buttons-widget</a>
+
+## Detailed Description
+This package is made for <a href="https://github.com/yjg30737/pyqt-custom-titlebar-window.git">pyqt-custom-titlebar-window</a>'s title bar part.
+
+## Usage
+* ```getIconTitleWidget() -> SvgIconTextWidget(QWidget)``` - get icon and title widget
+* ```getIconLbl() -> QLabel``` - get icon label
+* ```getTitleLbl() -> QLabel``` - get title label
+* ```getBtnWidget() -> MinMaxCloseButtonsWidget``` - get buttons widget
+
 ## Note
 If something goes wrong about this please contact me. 
 
