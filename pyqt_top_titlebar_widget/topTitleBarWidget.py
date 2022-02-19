@@ -80,7 +80,7 @@ class TopTitleBarWidget(QWidget):
         lay = QGridLayout()
         lay.addWidget(self.__svgIconTitleWidget, 0, 0, 1, 2, alignment=align)
         lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=Qt.AlignRight)
-        lay.setContentsMargins(2, 2, 2, 2)
+        lay.setContentsMargins(0, 0, 0, 0)
         self.setLayout(lay)
 
     def getIconTitleWidget(self):
