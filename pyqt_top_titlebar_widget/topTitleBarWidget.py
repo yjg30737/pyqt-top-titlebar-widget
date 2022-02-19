@@ -3,20 +3,21 @@ import os
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPalette, QFont, QIcon, QPixmap, QColor
 from PyQt5.QtWidgets import QGridLayout, QWidget, QLabel, QMenuBar
+
 from pyqt_windows_min_max_close_buttons_widget import WindowsMinMaxCloseButtonsWidget
+from pyqt_mac_min_max_close_buttons_widget import MacMinMaxCloseButtonsWidget
 
 from python_color_getter.pythonColorGetter import PythonColorGetter
-from pyqt_mac_min_max_close_buttons_widget import MacMinMaxCloseButtonsWidget
 from pyqt_svg_icon_text_widget.svgIconTextWidget import SvgIconTextWidget
 
 
 class TopTitleBarWidget(QWidget):
     def __init__(self, menu_bar: QMenuBar, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None,
-                 align=Qt.AlignCenter):
+                 align=Qt.AlignCenter, hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint):
         super().__init__()
         self.__menuBar = menu_bar
         self.__initVal()
-        self.__initUi(text=text, font=font, icon_filename=icon_filename, align=align)
+        self.__initUi(text=text, font=font, icon_filename=icon_filename, align=align, hint=hint)
 
     def __initVal(self):
         self.__svgIconTitleWidget = ''
@@ -24,7 +25,8 @@ class TopTitleBarWidget(QWidget):
         self.__titleLbl = QLabel()
         self.__btnWidget = ''
 
-    def __initUi(self, text: str, font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter):
+    def __initUi(self, text: str, font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter,
+                 hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint):
         self.__svgIconTitleWidget = SvgIconTextWidget()
 
         self.__iconLbl = self.__svgIconTitleWidget.getSvgLabel()
@@ -55,7 +57,7 @@ class TopTitleBarWidget(QWidget):
                                                                                           menubar_base_color.blue())
         title_lbl_color = QColor(title_lbl_r, title_lbl_g, title_lbl_b)
 
-        self.__btnWidget = WindowsMinMaxCloseButtonsWidget(menu_bar=self.__menuBar)
+        self.__btnWidget = WindowsMinMaxCloseButtonsWidget(menu_bar=self.__menuBar, hint=hint)
         self.__btnWidget.raise_()
 
         self.setObjectName('topTitleBar')
