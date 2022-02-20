@@ -2,7 +2,7 @@ import os
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPalette, QFont, QIcon, QPixmap, QColor
-from PyQt5.QtWidgets import QGridLayout, QWidget, QLabel, QMenuBar
+from PyQt5.QtWidgets import QGridLayout, QWidget, QLabel
 
 from pyqt_windows_min_max_close_buttons_widget import WindowsMinMaxCloseButtonsWidget
 from pyqt_mac_min_max_close_buttons_widget import MacMinMaxCloseButtonsWidget
@@ -12,10 +12,10 @@ from pyqt_svg_icon_text_widget.svgIconTextWidget import SvgIconTextWidget
 
 
 class TopTitleBarWidget(QWidget):
-    def __init__(self, menu_bar: QMenuBar, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None,
+    def __init__(self, base_widget: QWidget, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None,
                  align=Qt.AlignCenter, hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint):
         super().__init__()
-        self.__menuBar = menu_bar
+        self.__baseWidget = base_widget
         self.__initVal()
         self.__initUi(text=text, font=font, icon_filename=icon_filename, align=align, hint=hint)
 
@@ -50,14 +50,14 @@ class TopTitleBarWidget(QWidget):
 
         self.__titleLbl.setFont(font)
 
-        menubar_base_color = self.__menuBar.palette().color(QPalette.Base)
+        menubar_base_color = self.__baseWidget.palette().color(QPalette.Base)
 
         title_lbl_r, title_lbl_g, title_lbl_b = PythonColorGetter.get_complementary_color(menubar_base_color.red(),
                                                                                           menubar_base_color.green(),
                                                                                           menubar_base_color.blue())
         title_lbl_color = QColor(title_lbl_r, title_lbl_g, title_lbl_b)
 
-        self.__btnWidget = WindowsMinMaxCloseButtonsWidget(menu_bar=self.__menuBar, hint=hint)
+        self.__btnWidget = WindowsMinMaxCloseButtonsWidget(base_widget=self.__baseWidget, hint=hint)
 
         self.setObjectName('topTitleBar')
         self.setStyleSheet(f'''
