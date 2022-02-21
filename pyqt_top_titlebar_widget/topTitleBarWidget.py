@@ -12,12 +12,13 @@ from pyqt_svg_icon_text_widget.svgIconTextWidget import SvgIconTextWidget
 
 
 class TopTitleBarWidget(QWidget):
-    def __init__(self, base_widget: QWidget, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None,
-                 align=Qt.AlignCenter, hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint):
+    def __init__(self, base_widget: QWidget, text: str = '', font: QFont = QFont('Arial', 12),
+                 icon_filename: str = None,
+                 align=Qt.AlignCenter):
         super().__init__()
         self.__baseWidget = base_widget
         self.__initVal()
-        self.__initUi(text=text, font=font, icon_filename=icon_filename, align=align, hint=hint)
+        self.__initUi(text=text, font=font, icon_filename=icon_filename, align=align)
 
     def __initVal(self):
         self.__svgIconTitleWidget = ''
@@ -25,8 +26,7 @@ class TopTitleBarWidget(QWidget):
         self.__titleLbl = QLabel()
         self.__btnWidget = ''
 
-    def __initUi(self, text: str, font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter,
-                 hint=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint):
+    def __initUi(self, text: str, font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter):
         self.__svgIconTitleWidget = SvgIconTextWidget()
 
         self.__iconLbl = self.__svgIconTitleWidget.getSvgLabel()
@@ -50,27 +50,26 @@ class TopTitleBarWidget(QWidget):
 
         self.__titleLbl.setFont(font)
 
-        menubar_base_color = self.__baseWidget.palette().color(QPalette.Base)
+        self.__baseWidgetColor = self.__baseWidget.palette().color(QPalette.Base)
 
-        title_lbl_r, title_lbl_g, title_lbl_b = PythonColorGetter.get_complementary_color(menubar_base_color.red(),
-                                                                                          menubar_base_color.green(),
-                                                                                          menubar_base_color.blue())
-        title_lbl_color = QColor(title_lbl_r, title_lbl_g, title_lbl_b)
-
-        self.__btnWidget = WindowsMinMaxCloseButtonsWidget(base_widget=self.__baseWidget, hint=hint)
+        title_lbl_r, title_lbl_g, title_lbl_b = PythonColorGetter.get_complementary_color(self.__baseWidgetColor.red(),
+                                                                                          self.__baseWidgetColor.green(),
+                                                                                          self.__baseWidgetColor.blue())
+        self.__titleLblColor = QColor(title_lbl_r, title_lbl_g, title_lbl_b)
 
         self.setObjectName('topTitleBar')
         self.setStyleSheet(f'''
                             QWidget 
                             {{ 
-                            background-color: {menubar_base_color.name()};
+                            background-color: {self.__baseWidgetColor.name()};
                             }}
                             QLabel
                             {{
-                            color: {title_lbl_color.name()};
+                            color: {self.__titleLblColor.name()};
                             }}
                             '''
                            )
+
         self.setMinimumHeight(self.__titleLbl.fontMetrics().height())
 
         lay = self.__svgIconTitleWidget.layout()
@@ -78,9 +77,17 @@ class TopTitleBarWidget(QWidget):
 
         lay = QGridLayout()
         lay.addWidget(self.__svgIconTitleWidget, 0, 0, 1, 2, alignment=align)
-        lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=Qt.AlignRight)
         lay.setContentsMargins(0, 0, 0, 0)
         self.setLayout(lay)
+
+    def setButtons(self, hint, style):
+        if style == 'Windows':
+            self.__btnWidget = WindowsMinMaxCloseButtonsWidget(base_widget=self.__baseWidget, hint=hint)
+        elif style == 'Mac':
+            self.__btnWidget = MacMinMaxCloseButtonsWidget(hint=hint)
+
+        lay = self.layout()
+        lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=Qt.AlignRight)
 
     def getIconTitleWidget(self):
         return self.__svgIconTitleWidget
