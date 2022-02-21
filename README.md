@@ -14,7 +14,7 @@ PyQt top title bar widget for frameless window
 * <a href="https://github.com/yjg30737/pyqt-mac-min-max-close-buttons-widget.git">pyqt-mac-min-max-close-buttons-widget</a>
 
 ## Detailed Description
-This package is made for <a href="https://github.com/yjg30737/pyqt-custom-titlebar-window.git">pyqt-custom-titlebar-window</a>'s title bar part.
+This package is made for <a href="https://github.com/yjg30737/pyqt-custom-titlebar-window.git">pyqt-custom-titlebar-window</a>'s title bar part. You can see the preview of this in the documentation at the link.
 
 ## Usage
 * ```TopTitleBarWidget(base_widget: QWidget, text: str = '', font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter)``` - Constructor
