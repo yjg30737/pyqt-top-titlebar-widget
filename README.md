@@ -37,4 +37,5 @@ It's just a hunch, though.
 
 <hr>
 
-Current version(v0.0.1) supports Windows 10 OS style only.
+
+Below the version v1.0.0, this supports Windows 10 OS style only.
