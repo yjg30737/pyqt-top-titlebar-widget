@@ -37,5 +37,4 @@ It's just a hunch, though.
 
 <hr>
 
-
 Below the version v1.0.0, this supports Windows 10 OS style only.
