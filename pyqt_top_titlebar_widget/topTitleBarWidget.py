@@ -87,8 +87,8 @@ class TopTitleBarWidget(QWidget):
             lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=Qt.AlignRight)
         elif style == 'Mac':
             self.__btnWidget = MacMinMaxCloseButtonsWidget(hint=hint)
-            lay.addWidget(self.__btnWidget, 0, 0, 1, 1, alignment=Qt.AlignLeft)
-            lay.addWidget(self.__svgIconTitleWidget, 0, 1, 1, 1)
+            lay.addWidget(self.__btnWidget, 0, 0, 1, 3, alignment=Qt.AlignLeft)
+            lay.addWidget(self.__svgIconTitleWidget, 0, 2, 1, 3)
 
     def getIconTitleWidget(self):
         return self.__svgIconTitleWidget
