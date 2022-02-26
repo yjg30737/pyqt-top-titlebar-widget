@@ -83,7 +83,7 @@ class TopTitleBarWidget(QWidget):
     def setButtons(self, hint, style):
         lay = self.layout()
         if style == 'Windows':
-            self.__btnWidget = WindowsMinMaxCloseButtonsWidget(base_widget=self.__baseWidget, hint=hint)
+            self.__btnWidget = WindowsMinMaxCloseButtonsWidget(base_widget=self.__baseWidget, hint=hint, font=self.__titleLbl.font())
             lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=Qt.AlignRight)
         elif style == 'Mac':
             self.__btnWidget = MacMinMaxCloseButtonsWidget(hint=hint)
