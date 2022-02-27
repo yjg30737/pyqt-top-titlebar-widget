@@ -25,6 +25,7 @@ class TopTitleBarWidget(QWidget):
         self.__iconLbl = QLabel()
         self.__titleLbl = QLabel()
         self.__btnWidget = ''
+        self.__separator = QFrame()
 
     def __initUi(self, text: str, font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter):
         self.__svgIconTitleWidget = SvgIconTextWidget()
@@ -91,11 +92,10 @@ class TopTitleBarWidget(QWidget):
             lay.addWidget(self.__svgIconTitleWidget, 0, 2, 1, 3)
 
     def setBottomSeparator(self):
-        line = QFrame()
-        line.setFrameShape(QFrame.HLine)
-        line.setFrameShadow(QFrame.Sunken)
         lay = self.layout()
-        lay.addWidget(line, 1, 0, 1, 2)
+        self.__separator.setFrameShape(QFrame.HLine)
+        self.__separator.setFrameShadow(QFrame.Sunken)
+        lay.addWidget(self.__separator, 1, 0, 1, 2)
 
     def getIconTitleWidget(self):
         return self.__svgIconTitleWidget
