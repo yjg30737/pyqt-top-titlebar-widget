@@ -14,6 +14,6 @@ setup(
         'python-color-getter>=0.0.1',
         'pyqt-windows-min-max-close-buttons-widget @ git+https://git@github.com/yjg30737/pyqt-windows-min-max-close-buttons-widget.git@main',
         'pyqt-mac-min-max-close-buttons-widget @ git+https://git@github.com/yjg30737/pyqt-mac-min-max-close-buttons-widget.git@main',
-        'pyqt-svg-icon-text-widget @ git+https://git@github.com/yjg30737/pyqt-svg-icon-text-widget.git@main'
+        'pyqt-svg-icon-text-widget>=0.0.1'
     ]
 )
