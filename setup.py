@@ -11,7 +11,7 @@ setup(
     url='https://github.com/yjg30737/pyqt-top-titlebar-widget.git',
     install_requires=[
         'PyQt5>=5.15',
-        'python-color-getter @ git+https://git@github.com/yjg30737/python-color-getter.git@main',
+        'python-color-getter>=0.0.1',
         'pyqt-windows-min-max-close-buttons-widget @ git+https://git@github.com/yjg30737/pyqt-windows-min-max-close-buttons-widget.git@main',
         'pyqt-mac-min-max-close-buttons-widget @ git+https://git@github.com/yjg30737/pyqt-mac-min-max-close-buttons-widget.git@main',
         'pyqt-svg-icon-text-widget @ git+https://git@github.com/yjg30737/pyqt-svg-icon-text-widget.git@main'
