@@ -4,8 +4,8 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPalette, QFont, QIcon, QPixmap, QColor
 from PyQt5.QtWidgets import QGridLayout, QWidget, QLabel, QFrame
 
-from pyqt_windows_min_max_close_buttons_widget import WindowsMinMaxCloseButtonsWidget
-from pyqt_mac_min_max_close_buttons_widget import MacMinMaxCloseButtonsWidget
+from pyqt_windows_buttons_widget import WindowsButtonsWidget
+from pyqt_mac_buttons_widget import MacButtonsWidget
 
 from python_color_getter.pythonColorGetter import PythonColorGetter
 from pyqt_svg_icon_text_widget.svgIconTextWidget import SvgIconTextWidget
@@ -84,10 +84,10 @@ class TopTitleBarWidget(QWidget):
     def setButtons(self, hint, style):
         lay = self.layout()
         if style == 'windows':
-            self.__btnWidget = WindowsMinMaxCloseButtonsWidget(base_widget=self.__baseWidget, hint=hint, font=self.__titleLbl.font())
+            self.__btnWidget = WindowsButtonsWidget(base_widget=self.__baseWidget, hint=hint, font=self.__titleLbl.font())
             lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=Qt.AlignRight)
         elif style == 'mac':
-            self.__btnWidget = MacMinMaxCloseButtonsWidget(hint=hint)
+            self.__btnWidget = MacButtonsWidget(hint=hint)
             lay.addWidget(self.__btnWidget, 0, 0, 1, 3, alignment=Qt.AlignLeft)
             lay.addWidget(self.__svgIconTitleWidget, 0, 2, 1, 3)
 
