@@ -13,7 +13,7 @@ setup(
         'PyQt5>=5.15',
         'python-color-getter>=0.0.1',
         'pyqt-windows-buttons-widget>=0.0.1',
-        'pyqt-mac-min-max-close-buttons-widget @ git+https://git@github.com/yjg30737/pyqt-mac-min-max-close-buttons-widget.git@main',
+        'pyqt-mac-buttons-widget>=0.0.1',
         'pyqt-svg-icon-text-widget>=0.0.1'
     ]
 )
