@@ -9,7 +9,7 @@ This package is made for <a href="https://github.com/yjg30737/pyqt-custom-titleb
 ## Setup
 `python -m pip install pyqt-top-titlebar-widget`
 
-## Imported Packages
+## Included Packages
 * <a href="https://github.com/yjg30737/python-color-getter.git">python-color-getter</a>
 * <a href="https://github.com/yjg30737/pyqt-svg-icon-text-widget.git">pyqt-svg-icon-text-widget</a>
 * <a href="https://github.com/yjg30737/pyqt-windows-buttons-widget.git">pyqt-windows-buttons-widget</a>
