@@ -20,9 +20,6 @@ setup(
     long_description=long_description,
     install_requires=[
         'PyQt5>=5.15',
-        'python-color-getter>=0.0.1',
-        'pyqt-windows-buttons-widget>=0.0.1',
-        'pyqt-mac-buttons-widget>=0.0.1',
         'pyqt-svg-icon-text-widget>=0.0.1'
     ]
 )

@@ -1,13 +1,8 @@
 import os
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPalette, QFont, QIcon, QPixmap, QColor
+from PyQt5.QtGui import QPalette, QFont, QColor
 from PyQt5.QtWidgets import QGridLayout, QWidget, QLabel, QFrame
-
-from pyqt_windows_buttons_widget import WindowsButtonsWidget
-from pyqt_mac_buttons_widget import MacButtonsWidget
-
-from python_color_getter.pythonColorGetter import PythonColorGetter
 from pyqt_svg_icon_text_widget.svgIconTextWidget import SvgIconTextWidget
 
 
@@ -35,16 +30,7 @@ class TopTitleBarWidget(QWidget):
 
         self.__filename_ext = os.path.splitext(icon_filename)[-1]
         if icon_filename:
-            if self.__filename_ext == '.svg':
-                self.__svgIconTitleWidget.setSvgFile(icon_filename)
-            else:
-                icon = QIcon(icon_filename)
-                self.setWindowIcon(icon)
-                icon_size = font.pointSize()
-                icon = icon.pixmap(icon_size * 1.5, icon_size * 1.5)
-                pixmap = QPixmap(icon)
-                self.__windowTitleIconLabel.setPixmap(pixmap)
-                self.__windowTitleIconLabel.setMaximumWidth(pixmap.width())
+            self.__svgIconTitleWidget.setSvgFile(icon_filename)
         else:
             self.__iconLbl.setVisible(False)
         self.__svgIconTitleWidget.setText(text)
@@ -53,12 +39,10 @@ class TopTitleBarWidget(QWidget):
 
         self.__baseWidgetColor = self.__baseWidget.palette().color(QPalette.Base)
 
-        title_lbl_r, title_lbl_g, title_lbl_b = PythonColorGetter.get_complementary_color(self.__baseWidgetColor.red(),
-                                                                                          self.__baseWidgetColor.green(),
-                                                                                          self.__baseWidgetColor.blue())
-        self.__titleLblColor = QColor(title_lbl_r, title_lbl_g, title_lbl_b)
+        self.__titleLblColor = QColor(self.__baseWidgetColor.red() ^ 255,
+                                      self.__baseWidgetColor.green() ^ 255,
+                                      self.__baseWidgetColor.blue() ^ 255)
 
-        self.setObjectName('topTitleBar')
         self.setStyleSheet(f'''
                             QWidget 
                             {{ 
@@ -81,14 +65,14 @@ class TopTitleBarWidget(QWidget):
         lay.setContentsMargins(0, 0, 0, 0)
         self.setLayout(lay)
 
-    def setButtons(self, hint, style):
+    def setButtons(self, btnWidget, align=Qt.AlignRight):
         lay = self.layout()
-        if style == 'windows':
-            self.__btnWidget = WindowsButtonsWidget(base_widget=self.__baseWidget, hint=hint, font=self.__titleLbl.font())
-            lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=Qt.AlignRight)
-        elif style == 'mac':
-            self.__btnWidget = MacButtonsWidget(hint=hint)
-            lay.addWidget(self.__btnWidget, 0, 0, 1, 3, alignment=Qt.AlignLeft)
+        self.__btnWidget = btnWidget
+        self.__btnWidget.setFont(self.__titleLbl.font())
+        if align == Qt.AlignRight:
+            lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=align)
+        elif align == Qt.AlignLeft:
+            lay.addWidget(self.__btnWidget, 0, 0, 1, 3, alignment=align)
             lay.addWidget(self.__svgIconTitleWidget, 0, 2, 1, 3)
 
     def setBottomSeparator(self):
