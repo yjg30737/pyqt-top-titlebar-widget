@@ -72,8 +72,7 @@ class TopTitleBarWidget(QWidget):
         if align == Qt.AlignRight:
             lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=align)
         elif align == Qt.AlignLeft:
-            lay.addWidget(self.__btnWidget, 0, 0, 1, 3, alignment=align)
-            lay.addWidget(self.__svgIconTitleWidget, 0, 2, 1, 3)
+            lay.addWidget(self.__btnWidget, 0, 0, 1, 1, alignment=align)
 
     def setBottomSeparator(self):
         lay = self.layout()
