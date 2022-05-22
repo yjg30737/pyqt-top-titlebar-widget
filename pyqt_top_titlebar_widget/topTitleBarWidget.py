@@ -55,7 +55,7 @@ class TopTitleBarWidget(QWidget):
                             '''
                            )
 
-        self.setMinimumHeight(self.__titleLbl.fontMetrics().height())
+        self.setMinimumHeight(self.sizeHint().height())
 
         lay = self.__svgIconTitleWidget.layout()
         lay.setContentsMargins(0, 0, 0, 0)
