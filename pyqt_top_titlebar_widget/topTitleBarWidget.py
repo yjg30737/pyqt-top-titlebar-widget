@@ -28,7 +28,6 @@ class TopTitleBarWidget(QWidget):
         self.__iconLbl = self.__svgIconTitleWidget.getSvgLabel()
         self.__titleLbl = self.__svgIconTitleWidget.getTextLabel()
 
-        self.__filename_ext = os.path.splitext(icon_filename)[-1]
         if icon_filename:
             self.__svgIconTitleWidget.setSvgFile(icon_filename)
         else:
