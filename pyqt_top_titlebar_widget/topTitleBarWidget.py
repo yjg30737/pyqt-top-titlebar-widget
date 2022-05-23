@@ -65,7 +65,8 @@ class TopTitleBarWidget(QWidget):
     def setButtons(self, btnWidget, align=Qt.AlignRight):
         lay = self.layout()
         self.__btnWidget = btnWidget
-        self.__btnWidget.setFont(self.__titleLbl.font())
+        w = h = self.__titleLbl.fontMetrics().height()
+        self.__btnWidget.setButtonSize(w, h)
         if align == Qt.AlignRight:
             lay.addWidget(self.__btnWidget, 0, 1, 1, 1, alignment=align)
         elif align == Qt.AlignLeft:
