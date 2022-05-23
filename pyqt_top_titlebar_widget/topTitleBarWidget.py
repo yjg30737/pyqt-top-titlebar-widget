@@ -76,6 +76,7 @@ class TopTitleBarWidget(QWidget):
         lay = self.layout()
         self.__separator.setFrameShape(QFrame.HLine)
         self.__separator.setFrameShadow(QFrame.Sunken)
+        self.__separator.setContentsMargins(0, 0, 0, 0)
         lay.addWidget(self.__separator, 1, 0, 1, 2)
 
     def getIconTitleWidget(self):
