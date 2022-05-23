@@ -60,6 +60,9 @@ class TopTitleBarWidget(QWidget):
         lay = QGridLayout()
         lay.addWidget(self.__svgIconTitleWidget, 0, 0, 1, 2, alignment=align)
         lay.setContentsMargins(0, 0, 0, 0)
+        # todo
+        # set the spacing dynamically
+        lay.setSpacing(3)
         self.setLayout(lay)
 
     def setButtons(self, btnWidget, align=Qt.AlignRight):
