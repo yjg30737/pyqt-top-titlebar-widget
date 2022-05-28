@@ -5,7 +5,7 @@ from pyqt_svg_icon_text_widget.svgIconTextWidget import SvgIconTextWidget
 
 
 class TopTitleBarWidget(QWidget):
-    def __init__(self, base_widget: QWidget, text: str = '', font: QFont = QFont('Arial', 12),
+    def __init__(self, base_widget: QWidget, text: str = '', font: QFont = QFont('Arial', 14),
                  icon_filename: str = None,
                  align=Qt.AlignCenter):
         super().__init__()
@@ -20,7 +20,7 @@ class TopTitleBarWidget(QWidget):
         self.__btnWidget = ''
         self.__separator = QFrame()
 
-    def __initUi(self, text: str, font: QFont = QFont('Arial', 12), icon_filename: str = None, align=Qt.AlignCenter):
+    def __initUi(self, text: str, font: QFont = QFont('Arial', 14), icon_filename: str = None, align=Qt.AlignCenter):
         self.__svgIconTitleWidget = SvgIconTextWidget()
 
         self.__iconLbl = self.__svgIconTitleWidget.getSvgLabel()
