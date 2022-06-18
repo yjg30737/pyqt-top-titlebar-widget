@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPalette, QFont, QColor
+from PyQt5.QtGui import QPalette, QFont, QColor, qGray
 from PyQt5.QtWidgets import QGridLayout, QWidget, QLabel, QFrame
 from pyqt_svg_icon_text_widget.svgIconTextWidget import SvgIconTextWidget
 
@@ -20,6 +20,18 @@ class TopTitleBarWidget(QWidget):
         self.__btnWidget = ''
         self.__separator = QFrame()
 
+    def __getTitleTextColor(self, base_color):
+        r, g, b = base_color.red() ^ 255, base_color.green() ^ 255, base_color.blue() ^ 255
+        if r == g == b:
+            text_color = QColor(r, g, b)
+        else:
+            if qGray(r, g, b) > 255 // 2:
+                text_color = QColor(255, 255, 255)
+            else:
+                text_color = QColor(0, 0, 0)
+        return text_color.name()
+
+
     def __initUi(self, text: str, font: QFont = QFont('Arial', 14), icon_filename: str = None, align=Qt.AlignCenter):
         self.__svgIconTitleWidget = SvgIconTextWidget()
 
@@ -34,20 +46,18 @@ class TopTitleBarWidget(QWidget):
 
         self.__titleLbl.setFont(font)
 
-        self.__baseWidgetColor = self.__baseWidget.palette().color(QPalette.Base)
+        base_color = self.__baseWidget.palette().color(QPalette.Base)
 
-        self.__titleLblColor = QColor(self.__baseWidgetColor.red() ^ 255,
-                                      self.__baseWidgetColor.green() ^ 255,
-                                      self.__baseWidgetColor.blue() ^ 255)
+        self.__titleTextColor = self.__getTitleTextColor(base_color)
 
         self.setStyleSheet(f'''
-                            QWidget 
+                            QWidget
                             {{ 
-                            background-color: {self.__baseWidgetColor.name()};
+                            background-color: {base_color.name()};
                             }}
                             QLabel
                             {{
-                            color: {self.__titleLblColor.name()};
+                            color: {self.__titleTextColor};
                             }}
                             '''
                            )
