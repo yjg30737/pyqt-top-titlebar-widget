@@ -22,15 +22,11 @@ class TopTitleBarWidget(QWidget):
 
     def __getTitleTextColor(self, base_color):
         r, g, b = base_color.red() ^ 255, base_color.green() ^ 255, base_color.blue() ^ 255
-        if r == g == b:
-            text_color = QColor(r, g, b)
+        if qGray(r, g, b) > 255 // 2:
+            text_color = QColor(255, 255, 255)
         else:
-            if qGray(r, g, b) > 255 // 2:
-                text_color = QColor(255, 255, 255)
-            else:
-                text_color = QColor(0, 0, 0)
+            text_color = QColor(0, 0, 0)
         return text_color.name()
-
 
     def __initUi(self, text: str, font: QFont = QFont('Arial', 14), icon_filename: str = None, align=Qt.AlignCenter):
         self.__svgIconTitleWidget = SvgIconTextWidget()
