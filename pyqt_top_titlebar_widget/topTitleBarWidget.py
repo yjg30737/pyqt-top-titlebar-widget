@@ -99,3 +99,9 @@ class TopTitleBarWidget(QWidget):
 
     def getBtnWidget(self):
         return self.__btnWidget
+
+    # to maintain the maximum size intact
+    def event(self, e):
+        if int(e.type()) == 76:
+            self.setMaximumHeight(self.sizeHint().height())
+        return super().event(e)
